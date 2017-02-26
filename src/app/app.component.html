@@ -1,0 +1,63 @@
+<div class="container">
+<h1>
+  {{title}}
+</h1>
+<h3>Registration!!!</h3>  
+  <div class="container-fluid">
+<div class="jumbotron">
+  <form [formGroup]="complexForm" (ngSubmit)="submitForm(complexForm.value)">
+  
+  <div class="form-group"> 
+  <label class="head">Name</label>
+  <input type="text" class="form-control" required placeholder="Enter name" 
+  [formControl]="complexForm.controls['names']">
+   <div *ngIf="complexForm.controls['names'].hasError('required') && complexForm.controls['names'].touched" class="alert alert-danger">You must enter name.</div>
+  </div>
+  <!-- Required Validator Username-->
+  <div class="form-group">
+  <label class="head">UserName</label>
+  <input type="text" class="form-control"  required  placeholder="Enter Username" 
+  [formControl]="complexForm.controls['username']">
+  <div *ngIf="complexForm.controls['username'].hasError('required') && complexForm.controls['username'].touched" class="alert alert-danger">You must enter Username.</div>
+  </div>
+  
+  <!-- Email Validator-->
+  <div class="form-group">
+  <label class="head">Email Id</label>
+  <input type="email" class="form-control" required  placeholder="Enter Email Id"  
+  [formControl]="complexForm.controls['email']">
+  <div *ngIf="complexForm.controls['email'].hasError('required') && complexForm.controls['email'].touched"  class="alert alert-danger">You must enter Email.</div>
+  <div *ngIf=" complexForm.controls['email'].hasError('pattern') && complexForm.controls['email'].invalid" class="alert alert-danger">You must enter Valid Email.</div>
+  </div>
+  
+  <!-- Phone Paterna Validator-->
+  <div class="form-group">
+  <label class="head">Mobile No</label>
+  <input type="number" class="form-control" required  placeholder="Enter mobile no" 
+  [formControl]="complexForm.controls['phone']">
+  <div *ngIf="complexForm.controls['phone'].hasError('required') && complexForm.controls['phone'].touched " class="alert alert-danger">You must enter Phone number.</div>
+  <div *ngIf="complexForm.controls['phone'].hasError('pattern')" class="alert alert-danger">You must enter Valid Phone number.</div>
+  </div>
+
+  <div class="form-group">
+  <label class="head">Password</label>
+  <input type="password" class="form-control" required pattern placeholder="Enter password.."
+  [formControl]="complexForm.controls['password']">
+  <div *ngIf="complexForm.controls['password'].hasError('required') && complexForm.controls['password'].touched" class="alert alert-danger">You must enter Password.</div>
+  <div *ngIf="complexForm.controls['password'].hasError('pattern')" class="alert alert-danger">Password must have minimum 7 and maximum of 20 values(a-z 0-9).</div>
+  </div>
+  
+
+  <div class="form-group">
+  <label class="head">Confirm-Password</label>
+  <input type="password" class="form-control"  required  placeholder="Enter confirm password" [formControl]="complexForm.controls['cpassword']">
+  <div *ngIf="complexForm.controls['cpassword'].value!==complexForm.controls['password'].value" class="alert alert-danger">Password Mismatch</div>
+  </div>
+
+  <div class="form-group">
+  <button class="btn btn-primary" [disabled]="!complexForm.valid" type="submit">Submit</button>
+  </div>
+</form>
+</div>
+</div>
+</div>

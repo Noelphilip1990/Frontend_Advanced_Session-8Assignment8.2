@@ -1,0 +1,16 @@
+.head
+{
+	font-style: italic;
+	font-size: 20px;
+	font-weight: bold;
+
+}
+
+.ng-valid[required],.ng-valid[pattern] ,.ng-valid[minLength].ng-valid.required  {
+  border: 1px solid #42A948; 
+}
+.ng-invalid:not(form)  {
+  border: 1px solid #a94442; 
+}
+.even { color: red; }
+.odd { color: green; }
